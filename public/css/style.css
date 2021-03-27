@@ -98,7 +98,7 @@ input[type="text"] {
     color: #ffffff;
     width: 100px;
     color: ffffff;
-    background-color: #3d92de;
+    background-color: #f94144;
     font-family: "Raleway", sans-serif;
     font-size: 12;
     cursor: pointer;
@@ -109,7 +109,7 @@ input[type="text"] {
 }
 
 .del-btn:hover {
-    background-color: #297fca;
+    background-color: #e0373a;
 }
 
 .table-text {
