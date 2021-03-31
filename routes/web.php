@@ -20,21 +20,24 @@ use RealRashid\SweetAlert\Facades\Alert;
 /**
  * Display All Tasks
  */
-
-
 Route::get('/', function () {
-    return view('tasks');
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+
+    return view('tasks', [
+        'tasks' => $tasks
+    ]);
 });
-
-
 
 
 /**
  * Delete An Existing Task
  */
 Route::delete('/task/{id}', function ($id) {
-    //
+    Task::findOrFail($id)->delete();
+
+    return redirect('/');
 });
+
 
 
 /**
@@ -58,23 +61,6 @@ Route::post('/task', function (Request $request) {
     $task = new Task;
     $task->name = $request->name;
     $task->save();
-
-    return redirect('/');
-});
-
-
-
-Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
-});
-
-
-Route::delete('/task/{id}', function ($id) {
-    Task::findOrFail($id)->delete();
 
     return redirect('/');
 });
